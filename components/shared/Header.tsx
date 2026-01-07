@@ -35,9 +35,6 @@ export const Header = ({classname}:Props) => {
             </div>
           </div>
 
-
-
-
           {/* Правая часть */}
 
           <div className='flex items-center gap-3'>

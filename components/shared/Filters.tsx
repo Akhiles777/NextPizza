@@ -1,15 +1,25 @@
+'use client'
 import { Title } from "./title";
 import { FilterCheckbox } from "./filter-checkbox";
-import { Input, Slider } from "../ui";
+import { Input} from "../ui";
 import { RangeSlider } from "./range-slider";
-import { Check } from "lucide-react";
 import { CheckboxFiltersGroup } from "./checkbox-filters-group";
+import { useFilterIngredients } from "@/hooks/useFilterIngredients";
+
+
 
 interface Props{
     className?: string;
 }
 
 export const Filters:React.FC<Props> = ({className}) => {
+
+const {ingredients, loading, onAddId,selectedIds} = useFilterIngredients()
+
+const items = ingredients.map((items) => ({value: String(items.id), text: items.name}))
+
+
+
   return (
     <div className={className}>
    <Title text="Фильтрация" size='sm' className="mb-5 font-bold"/>
@@ -34,30 +44,15 @@ export const Filters:React.FC<Props> = ({className}) => {
 
 <CheckboxFiltersGroup
 title="Популярные ингредиенты"
-items={[
-  {text:'Грибы',value:'1'},
-  {text:'Ветчина',value:'2'},
-  {text:'Ананас',value:'3'},
-  {text:'Сыр',value:'4'},
-  {text:'Томаты',value:'5'},
-  {text:'Лук',value:'6'},
-  {text:'Перец',value:'7'},
-  {text:'Огурцы',value:'8'},
-]}
+items={items}
 className="mt-3"
 limit={6}
-defoultItems={[
-{text:'Грибы',value:'1'},
-  {text:'Ветчина',value:'2'},
-  {text:'Ананас',value:'3'},
-  {text:'Сыр',value:'4'},
-  {text:'Томаты',value:'5'},
-  {text:'Лук',value:'6'},
-  {text:'Перец',value:'7'},
-  {text:'Огурцы',value:'8'},
-  {text:'Маслины',value:'9'},
-  {text:'Кукуруза',value:'10'},
-]}
+defoultItems={items.slice(0,6)}
+loading={loading}
+onClickCheckbox={onAddId}
+selectedIds
+
+
 />  
 
     </div>

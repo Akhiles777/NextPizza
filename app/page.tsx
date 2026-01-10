@@ -1,14 +1,11 @@
-import Image from "next/image";
 import { Container } from "@/components/shared/container";
 import { Title } from "@/components/shared/title";
 import { TopBar } from "@/components/shared/top-bar";
-import { Filters } from "@/components/shared/Filters";
+import { Filters } from "@/components/shared/filters";
 import { ProductGroupList } from "@/components/shared/product-group-list";
 
 
 export default function Home() {
-
-
   return (
     <>
 <Container className="mt-10">

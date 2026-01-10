@@ -1,13 +1,10 @@
 'use client';
 import React from "react";
 
-import { Input } from "../ui";
+import { Input, Skeleton } from "../ui";
 import { FilterChecboxProps } from "./filter-checkbox";
 import { FilterCheckbox } from "./filter-checkbox";
-import { SrvRecord } from "dns";
 import { Plus } from "lucide-react";
-
-
 
 
 type Item = FilterChecboxProps
@@ -18,13 +15,15 @@ interface Props{
     items: Item[];
     defoultItems: Item[];
     limit: number;
+    loading?: boolean
+    selectedIds?: Set<string>
     searchInputPlaceholder?: string;
-    onChange?: (values: string[]) => void;
+    onClickCheckbox?: (id: string) => void;
     defuoltValues?: string[];
 
 }
 
-export const CheckboxFiltersGroup:React.FC<Props> = ({className,title,items,defoultItems,defuoltValues,limit,onChange,searchInputPlaceholder='Поиск...'}) => {
+export const CheckboxFiltersGroup:React.FC<Props> = ({className,title,items,defoultItems,defuoltValues,limit,loading, selectedIds, onClickCheckbox,searchInputPlaceholder='Поиск...'}) => {
 
 const [showAll,setShowAll] = React.useState(false);
 
@@ -37,6 +36,15 @@ const onChangeSearchInput = (value: string) => {
     setSearchValue(value);
 }
 
+if(loading){
+    return <div className={className}>
+        <p className="font-bold mb-3">{title }</p>
+        {   ...Array(limit).fill(0).map((_,index) => (
+                <Skeleton key={index} className="h-6 mb-4 rounded-[8px]"/>
+            ))
+        }
+    </div>
+}
 
 const list = showAll ? items.filter((item) => item.text.toLowerCase().includes(searchValue.toLocaleLowerCase())) : defoultItems.slice(0,limit);
 
@@ -56,9 +64,9 @@ const list = showAll ? items.filter((item) => item.text.toLowerCase().includes(s
 
 <div className="flex flex-col gap-4 mt-7 max-h-96 pr-2 overflow-auto scrollbar">
 {list.map((item,index) => (
-    <FilterCheckbox  key={index} text={item.text} value={item.value} checked={false} 
+    <FilterCheckbox  key={index} text={item.text} value={item.value} checked={selectedIds?.has(item.value)} 
     endAdornment={item.endAdornment} 
-    onChekedChange={() => console.log('changed')}
+    onChekedChange={() => onClickCheckbox?.(item.value)}
     />
 ))}
 </div>

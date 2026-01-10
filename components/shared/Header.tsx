@@ -2,9 +2,13 @@ import {cn} from '@/lib/utils';
 import { Container } from './container';
 import Image from 'next/image';
 import { Button } from '../ui/Button';
-import { ArrowRight, Link, Search, User } from 'lucide-react';
+import { ArrowRight, Search, User } from 'lucide-react';
 import { ShoppingCart} from 'lucide-react';
 import { Input } from '../ui';
+
+import Link from 'next/link';
+import { SearchInput } from './search-input';
+
 
 
 
@@ -24,7 +28,8 @@ export const Header = ({classname}:Props) => {
  <Container className="flex items-center justify-between py-8">
         {/* Левая часть */}
 
- 
+ <Link href='/'>
+
          <div className="flex items-center gap-4">
             <Image src="/logo.png" alt="Logo" width={35} height={35} />
             <div>
@@ -34,6 +39,13 @@ export const Header = ({classname}:Props) => {
               <p className="text-sm text-gray-400 leading-3 mt-2">вкусней уже некуда</p>
             </div>
           </div>
+ </Link>
+
+
+<div className='mx-10 flex-1'>
+
+<SearchInput classname='w-full'/>
+</div>
 
           {/* Правая часть */}
 

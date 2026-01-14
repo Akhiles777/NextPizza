@@ -36,7 +36,6 @@ export default function Home() {
 ]} categoryId={1}
 />
 
-
 <ProductGroupList title="Завтрак" items={[
   {id:1,name:'Пепперони фреш с перцем',imageUrl:'https://media.dodostatic.net/image/r:292x292/0198bf55aa0a735e8b20fcc260745346.avif',items:[{price: 540}]},
   {id:2,name:'Чизбургер-пицца',imageUrl:'https://media.dodostatic.net/image/r:292x292/019a10a0c9ab792190a97768688bc6e9.avif',items:[{price: 580}]},

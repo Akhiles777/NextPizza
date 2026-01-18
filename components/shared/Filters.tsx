@@ -53,7 +53,7 @@ items={[
 selected={filters.pizzaTypes}
 name="pizzaTypes"
 className="mb-5"
-onClickCheckbox={filters.setPizzatypes}
+onClickCheckbox={filters.setPizzaTypes}
 />  
 
 

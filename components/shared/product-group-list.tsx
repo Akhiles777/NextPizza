@@ -21,11 +21,14 @@ interface Props{
 
 export const ProductGroupList:React.FC<Props> = ({title,items,className='',listClassName='',categoryId}) => {
 
-const intersectionRef = React.useRef(null);
+const intersectionRef = React.useRef<HTMLDivElement>(null);
 
 const setActiveCategoryId = useCategoryStore((state) => state.setActiveId);
 
-const intersection = useIntersection(intersectionRef, {
+
+
+
+const intersection = useIntersection(intersectionRef as React.RefObject<HTMLElement>, {
     threshold: 0.4
     });
 
@@ -41,6 +44,8 @@ React.useEffect(() => {
     
     <Title text={title} size="lg" className="mb-6 font-bold"/>
  <div className={cn('grid grid-cols-3 gap-[50px]',listClassName)}>
+
+
 {items.map((item,index) => (
     <ProductCard
     key={index}

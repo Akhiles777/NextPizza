@@ -44,10 +44,11 @@ const categories = await prisma.category.findMany({
     <ProductGroupList
       key={category.id}
       title={category.name}
-      products={category.products}
       categoryId={category.id}
       items={category.products}
     />
+    
+
   )
 ))}   
 

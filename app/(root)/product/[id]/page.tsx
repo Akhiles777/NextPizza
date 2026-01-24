@@ -22,7 +22,7 @@ export default async function ProductPage({ params }: { params: Promise<{ id: st
         <ProductImage size={40} classname="" imageUrl={product.imageUrl} />
         <div className="w-[490px] bg-[#FCFCFC]">
           <Title text={product.name} size="md" className="font-extrabold mb-1" />
-          <p className="text-gray-400">Lorem</p>
+          <p className="text-gray-400">Id: {product.id}</p>
         </div>
       </div>
     </Container>

@@ -1,7 +1,7 @@
 import { Container } from "@/components/shared/container";
 import { Title } from "@/components/shared/title";
 import { TopBar } from "@/components/shared/top-bar";
-import { Filters } from "@/components/shared/filters";
+import { Filters } from "@/components/shared/Filters";
 import { ProductGroupList } from "@/components/shared/product-group-list";
 import { prisma } from "@/prisma/prisma-client";
 

@@ -53,6 +53,8 @@ React.useEffect(() => {
     name={item.name}
     price={item.items[0].price}
     imageUrl={item.imageUrl}
+    ingredients={item.ingredients}
+    items={item.items}
     />
 ))}
  </div>

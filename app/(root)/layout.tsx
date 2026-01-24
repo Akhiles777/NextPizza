@@ -3,8 +3,8 @@ import { Geist, Geist_Mono } from "next/font/google";
 import { Nunito } from "next/font/google";
 import "../globals.css";
 import { Header } from "@/components/shared/Header";
-
-
+import { ProductModalProvider } from "@/context/ProductModalContext";
+import { ProductModal } from "@/components/shared/modals/ProductModal";
 
 export const metadata: Metadata = {
   title: "Next Pizza",
@@ -12,18 +12,18 @@ export const metadata: Metadata = {
 };
 
 export default function HomeLayout({
-  children,
-     modal
+  children
 }: Readonly<{ 
   children: React.ReactNode;
-  modal: React.ReactNode;
 }>) {
   return (
-        <main className='min-h-screen'>
-          <Header/>
+    <ProductModalProvider>
+      <main className='min-h-screen'>
+        <Header/>
         {children}
-        {modal}
-        </main>
-      
+        <ProductModal />
+      </main>
+    </ProductModalProvider>
   );
 }
+
